@@ -2,8 +2,8 @@
 <div>
     <b-container v-if="fetched">
         <b-row>
-            <b-col cols="12" sm="6" md="4" lg="3" v-for="image in images" :key="image.id">
-                <image-modal v-bind:image="image.src"></image-modal>
+            <b-col cols="12" sm="6" md="4" lg="3" v-for="image in images" :key="image.id" :id="image.id">
+                <image-modal v-bind:image="image"></image-modal>
             </b-col>
         </b-row>
     </b-container>
@@ -32,7 +32,10 @@ export default {
                 hits.hits.map(image => {
                     this.images.push({
                         src: image.webformatURL,
-                        id: image.id
+                        srcLarge: image.largeImageURL,
+                        tags: image.tags,
+                        id: image.id,
+                        category: category
                     });
                 });
                 this.fetched = true;
