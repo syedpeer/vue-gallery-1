@@ -16,9 +16,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$white: #dcdcdd;
-$yellow: #feb914;
-$gray: #46494c;
 
 .albumsPage {
   margin: 0px;

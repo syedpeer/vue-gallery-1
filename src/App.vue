@@ -40,6 +40,11 @@ export default {
     position: relative;
     overflow: hidden;
 }
+@media screen and (max-width: 480px) {
+    body {
+        overflow-y: scroll;
+    }
+}
 .nav {
     z-index: 10;
     background-color: #231F20;
