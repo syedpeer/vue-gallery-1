@@ -13,9 +13,6 @@
             <b-col cols="6">
                 <b-btn class="mt-2 buttonOther" variant="outline-secondary" block @click="nextModal(image.id)">Next &#8680;</b-btn>
             </b-col>
-            <!-- <b-col offset-lg="10" lg="2" offset-md="9" md="3" offset-sm="9" sm="3" cols="4" offset="8">
-                <b-btn class="mt-3" variant="outline-danger" block @click="hideModal">Close</b-btn>
-            </b-col> -->
         </b-row>
     </b-modal>
 </div>
@@ -33,9 +30,6 @@ export default {
     methods: {
         showModal() {
             this.$refs.modalRef.show();
-        },
-        hideModal() {
-            this.$refs.modalRef.hide();
         },
         nextModal(id) {
             const next = document.getElementById(id).nextSibling ? document.getElementById(id).nextSibling.children[0].children[0] : null;

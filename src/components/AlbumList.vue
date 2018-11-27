@@ -1,19 +1,21 @@
 <template>
 <div>
     <b-container class="albumsContainer">
-        <b-row>
-            <b-col class="cardsMargin" v-for="albumCategory in albumCategories" :key="albumCategory.category" cols="12" sm="6" md="4" lg="3">
-                <b-card v-on:click="handleOpenAlbum(albumCategory.category)" v-bind:title="albumCategory.category" :img-src="albumCategory.thumbnail" img-alt="Image" img-top tag="article" class="mb-2 albumCard">
-                    <button >see album</button>
-                </b-card>
-            </b-col>
-        </b-row>
+        <transition name="fade">
+            <b-row v-show="created">
+                <b-col class="cardsMargin" v-for="albumCategory in albumCategories" :key="albumCategory.category" cols="12" sm="6" md="4" lg="3">
+                    <b-card v-on:click="handleOpenAlbum(albumCategory.category)" v-bind:title="albumCategory.category" :img-src="albumCategory.thumbnail" img-alt="Image" img-top tag="article" class="mb-2 albumCard">
+                        <button >see album</button>
+                    </b-card>
+                </b-col>
+            </b-row>
+        </transition>
+
     </b-container>
 </div>
 </template>
 
 <script>
-import ImagesAsync from "../services/api/ImagesAsync.js";
 import {
     albumCategories
 } from "./albumCategories.js";
@@ -22,8 +24,10 @@ export default {
     name: "AlbumList",
     data() {
         return {
-            albumCategories: { ...albumCategories
-            }
+            albumCategories: {
+                ...albumCategories
+            },
+            created: false,
         };
     },
     methods: {
@@ -34,8 +38,11 @@ export default {
                     category: category
                 }
             });
-        }
+        },
     },
+    mounted() {
+        this.created = true;
+    }
 };
 </script>
 
@@ -64,8 +71,9 @@ export default {
         bottom: 10px;
         width: 100%;
     }
+
     &:hover {
-    background-color: #231f20;
+        background-color: #231f20;
 
         h4 {
             color: white;
@@ -76,7 +84,7 @@ export default {
             overflow: hidden;
             opacity: 0.4;
         }
-}
+    }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -127,6 +135,7 @@ export default {
         border-bottom: solid 2px #feb914;
         text-align: right;
         cursor: pointer;
+
         &:focus {
             outline: none;
         }
@@ -135,5 +144,16 @@ export default {
 
 .cardsMargin {
     margin: 5px 0;
+}
+.fade-enter-active {
+    transition: opacity .9s ease-in-out;
+}
+
+.fade-enter-to {
+    opacity: 1;
+}
+
+.fade-enter {
+    opacity: 0;
 }
 </style>

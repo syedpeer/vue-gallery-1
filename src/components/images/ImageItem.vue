@@ -67,12 +67,12 @@ export default {
 }
 
 .imageContainer {
-    min-height: calc(100vh);
+    min-height: 100vh;
     padding: 81px 0;
 }
 
 .fade-enter-active {
-    transition: opacity 3s ease-in-out;
+    transition: opacity 2.6s ease-in-out;
 }
 
 .fade-enter-to {
