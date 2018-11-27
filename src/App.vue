@@ -2,7 +2,7 @@
 <div id="app">
     <b-navbar type="dark" class="nav" toggleable="md">
         <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-        <b-navbar-brand href="#">Pix</b-navbar-brand>
+        <b-navbar-brand>                    <router-link to="/">Pix</router-link></b-navbar-brand>
         <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav>
                 <b-nav-item href="#">
@@ -60,8 +60,13 @@ a {
     }
 }
 
-.navbar-dark .navbar-brand {
+.navbar-brand {
+    a {
     color: #FEB914;
     font-weight: 900;
+    }
+    :hover {
+            text-decoration: none;
+        }
 }
 </style>

@@ -1,6 +1,9 @@
 <template>
 <div class="homeContainer">
     <b-container class="authorContainer">
+        <router-link to="/albums">
+            <div class="getStarted">Get started &#8594;</div>
+        </router-link>
         <b-row class="authorCard">
             <b-col offset="1" cols="10">
                 <h1>About</h1>
@@ -28,7 +31,7 @@
 
 <script>
 export default {
-  name: "Home"
+    name: "Home"
 };
 </script>
 
@@ -38,70 +41,82 @@ $yellow: #feb914;
 $gray: #46494c;
 
 .homeContainer {
-  margin: 0px;
-  padding: 0px;
-  overflow: hidden;
-  height: 100vh;
-  position: relative;
-  padding-top: 56px; //menu size
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    min-height: 100vh;
+    position: relative;
+    padding-top: 56px; //menu size
 }
 
 .authorContainer {
-  max-width: 900px;
-  position: relative;
-  z-index: 1;
+    max-width: 900px;
+    position: relative;
+    z-index: 1;
+
+    .getStarted {
+        position: absolute;
+        color: $white;
+        top: 15px;
+        right: 35px;
+        text-transform: uppercase;
+        font-size: 12px;
+        z-index: 2;
+        color: $yellow;
+    }
 }
 
 .authorCard {
-  text-align: center;
-  background-color: #231f20;
-  color: $white;
-  height: 100%;
-  margin: 100px 0;
-  -webkit-box-shadow: 3px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 3px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 3px 2px 5px 0px rgba(0, 0, 0, 0.75);
-  border-radius: 10px;
+    text-align: center;
+    background-color: #231f20;
+    color: $white;
+    height: 100%;
+    margin: 100px 0;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 30px;
 
-  .pixabay {
-    margin-bottom: 50px;
+    .pixabay {
+        margin-bottom: 50px;
 
-    img {
-      width: 100%;
-      width: 75px;
-      height: 75px;
-      border-radius: 20%;
+        img {
+            width: 100%;
+            width: 75px;
+            height: 75px;
+            border-radius: 20%;
+        }
     }
-  }
 
-  .linkInfo {
+    .linkInfo {
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .gh {
+        text-align: right;
+    }
+
+    .pb {
+        text-align: left;
+
+        img {
+            border: 2px $white solid;
+        }
+    }
+
+    h1 {
+        margin: 50px 0;
+        font-weight: 900;
+        font-size: 42px;
+        text-transform: uppercase;
+    }
+
     p {
-      font-size: 14px;
+        margin: 10px 0;
+        font-weight: 300;
+        font-size: 20px;
     }
-  }
-
-  .gh {
-    text-align: right;
-  }
-
-  .pb {
-    text-align: left;
-    img {
-      border: 2px $white solid;
-    }
-  }
-
-  h1 {
-    margin: 50px 0;
-    font-weight: 900;
-    font-size: 42px;
-    text-transform: uppercase;
-  }
-
-  p {
-    margin: 10px 0;
-    font-weight: 300;
-    font-size: 20px;
-  }
 }
 </style>

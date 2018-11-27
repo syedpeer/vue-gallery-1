@@ -2,19 +2,20 @@
 <div class="thumbnailContainer">
     <div @click="showModal" v-bind:style="{ backgroundImage: 'url(' + image.src + ')' }" class="thumbnail">
     </div>
-    <b-modal ref='thumbnailBox' hide-footer size="lg" v-model="modalShow" :title='"CATEGORY: " + image.category'>
+    <b-modal ref='modalRef' hide-footer size="lg" v-model="modalShow" :title='"CATEGORY: " + image.category'>
         <b-img v-bind:src="image.srcLarge" fluid alt="Responsive image" />
         <p class="tags">tags: {{image.tags}}</p>
         <b-row>
             <b-col cols="6" >
-                <b-btn class="mt-1" variant="outline-info" block @click="previousModal(image.id)">Previous</b-btn>
+                <b-btn class="mt-2 buttonOther" variant="outline-secondary" block @click="previousModal(image.id)">
+                    &#8678; Previous</b-btn>
             </b-col>
             <b-col cols="6">
-                <b-btn class="mt-1" variant="outline-info" block @click="nextModal(image.id)">Next</b-btn>
+                <b-btn class="mt-2 buttonOther" variant="outline-secondary" block @click="nextModal(image.id)">Next &#8680;</b-btn>
             </b-col>
-            <b-col offset-lg="10" lg="2" offset-md="9" md="3" offset-sm="9" sm="3" cols="4" offset="8">
+            <!-- <b-col offset-lg="10" lg="2" offset-md="9" md="3" offset-sm="9" sm="3" cols="4" offset="8">
                 <b-btn class="mt-3" variant="outline-danger" block @click="hideModal">Close</b-btn>
-            </b-col>
+            </b-col> -->
         </b-row>
     </b-modal>
 </div>
@@ -31,10 +32,10 @@ export default {
     },
     methods: {
         showModal() {
-            this.$refs.thumbnailBox.show();
+            this.$refs.modalRef.show();
         },
         hideModal() {
-            this.$refs.thumbnailBox.hide();
+            this.$refs.modalRef.hide();
         },
         nextModal(id) {
             const next = document.getElementById(id).nextSibling ? document.getElementById(id).nextSibling.children[0].children[0] : null;
@@ -59,9 +60,9 @@ export default {
     background-position: center;
     transition: 0.5s;
     border-radius: 10px;
+    &:hover {
+        transform: scale(1.1);
 }
-.thumbnail:hover {
-    transform: scale(1.1);
 }
 
 .thumbnailContainer{
@@ -79,5 +80,39 @@ export default {
     text-align: right;
     font-size: 12px;
     margin: 5px 0;
+}
+.modal-dialog {
+    padding-top: 50px;
+    header {
+        background-color: #dcdcdd;
+        border-bottom-color: #feb914;
+        h5 {
+        font-weight: 900;
+        }
+        button {
+            opacity: 1;
+            font-size: 28px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    .modal-body {
+        background-color: #dcdcdd;
+    }
+}
+.buttonOther {
+    color: #46494c;
+    border: #feb914 1px solid;
+    font-weight: 700;
+    transition: background-color ease-in 0.4s;
+    &:hover {
+        background-color: #46494c;
+        border-color: #feb914;
+    }
+    &:active {
+        border: none;
+        background-color: #feb914;
+    }
 }
 </style>
