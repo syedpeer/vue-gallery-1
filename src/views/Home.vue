@@ -4,34 +4,48 @@
         <router-link to="/albums">
             <div class="getStarted">Get started &#8594;</div>
         </router-link>
-        <b-row class="authorCard">
-            <b-col offset="1" cols="10">
-                <h1>About</h1>
-                <p>
-                    PIX is a Vue.js 2.0 album app. It's UI was created with 'Bootstrap+Vue' CSS library. App's using Pixabay image API to fetch pics from different categories - if images won't show, check whether Pixabay website is online. Check out my GitHub profile below:
-                </p>
-            </b-col>
-            <b-col offset-lg="8" lg="2" offset-md="8" md="2" sm="6" cols="6" class="gh linkInfo">
-                <p>GH profile: </p>
-            </b-col>
-            <b-col lg="2" md="2" sm="6" cols="6" class="pb linkInfo">
-                <p> Image API:</p>
-            </b-col>
-            <b-col offset-lg="8" lg="2" offset-md="8" md="2" offset-sm="0" sm="6" offset="0" cols="6" class="pixabay gh"><a href="https://github.com/andriejka">
+        <fade-transition>
+            <b-row v-show="created" class="authorCard">
+                <b-col offset="1" cols="10">
+                    <h1>About</h1>
+                    <p>
+                        PIX is a Vue.js 2.0 album app. It's UI was created with 'Bootstrap+Vue' CSS library. App's using Pixabay image API to fetch pics from different categories - if images won't show, check whether Pixabay website is online. Check out my GitHub profile below:
+                    </p>
+                </b-col>
+                <b-col offset-lg="8" lg="2" offset-md="8" md="2" sm="6" cols="6" class="gh linkInfo">
+                    <p>GH profile: </p>
+                </b-col>
+                <b-col lg="2" md="2" sm="6" cols="6" class="pb linkInfo">
+                    <p> Image API:</p>
+                </b-col>
+                <b-col offset-lg="8" lg="2" offset-md="8" md="2" offset-sm="0" sm="6" offset="0" cols="6" class="pixabay gh"><a href="https://github.com/andriejka">
     <img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" alt="Pixabay">
 </a></b-col>
-            <b-col lg="2" md="2" sm="6" cols="6" class="pb pixabay"><a href="https://pixabay.com/">
+                <b-col lg="2" md="2" sm="6" cols="6" class="pb pixabay"><a href="https://pixabay.com/">
     <img src="https://pixabay.com/static/img/logo_square.png" alt="Github">
 </a></b-col>
 
-        </b-row>
+            </b-row>
+        </fade-transition>
     </b-container>
 </div>
 </template>
 
 <script>
+import FadeTransition from '../components/animations/FadeTransition.vue'
 export default {
-    name: "Home"
+    name: "Home",
+    components: {
+        FadeTransition
+    },
+    data() {
+        return {
+            created: false
+        }
+    },
+    mounted() {
+        this.created = true;
+    }
 };
 </script>
 
@@ -118,5 +132,8 @@ $gray: #46494c;
         font-weight: 300;
         font-size: 20px;
     }
+}
+.fade-enter-active {
+    transition: opacity .5s ease-in-out;
 }
 </style>

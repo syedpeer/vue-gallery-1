@@ -19,9 +19,15 @@ export default new Router({
             component: Albums
         },
         {
-            path: '/albums/:category',
+            path: '/albums/:category/:num',
             name: 'album',
             component: ImageItem
         }
-    ]
+    ],
+    scrollBehavior (to, from, savedPosition) {
+        return {
+            x: 0,
+            y: 0
+        }
+    }
 })

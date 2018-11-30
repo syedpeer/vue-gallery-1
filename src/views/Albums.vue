@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AlbumList from "../components/AlbumList.vue";
+import AlbumList from "../components/albums/AlbumList.vue";
 
 export default {
   name: "Albums",
@@ -23,6 +23,6 @@ export default {
   overflow: hidden;
   min-height: calc(100vh - 55px);
   position: relative;
-  padding-top: 56px; //menu size
+  padding-top: 56px;
 }
 </style>

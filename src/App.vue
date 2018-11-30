@@ -20,17 +20,12 @@
 </template>
 
 <script>
-import BackgroundAnim from './components/BackgroundAnim.vue'
+import BackgroundAnim from './components/animations/BackgroundAnim.vue'
 export default {
     name: "app",
     components: {
         BackgroundAnim
     },
-    data() {
-        return {
-            msg: "moja apka"
-        };
-    }
 };
 </script>
 
